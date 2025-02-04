@@ -25,7 +25,6 @@ const isArmstrong = (num) => {
   const sum = digits.reduce((acc, digit) => acc + Math.pow(digit, power), 0);
   return sum === num;
 };
-
 const getNumberProperties = async (number) => {
   if (isNaN(number)) {
     return { error: true, number };
@@ -37,14 +36,14 @@ const getNumberProperties = async (number) => {
   properties.push(number % 2 === 0 ? "even" : "odd");
 
   try {
-    const response = await axios.get(`http://numbersapi.com/${number}/math`);
+    const response = await axios.get(`http://numbersapi.com/${number}/math?json`);
     return {
       number,
       is_prime: isPrime(number),
       is_perfect: isPerfect(number),
       properties,
       digit_sum: number.toString().split("").reduce((sum, digit) => sum + parseInt(digit), 0),
-      fun_fact: response.data
+      fun_fact: response.data.text 
     };
   } catch (error) {
     return { number, error: true };
