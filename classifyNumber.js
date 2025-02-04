@@ -1,6 +1,5 @@
 const axios = require("axios");
 
-// Check if a number is prime
 const isPrime = (num) => {
   if (num < 2) return false;
   for (let i = 2; i * i <= num; i++) {
@@ -9,7 +8,6 @@ const isPrime = (num) => {
   return true;
 };
 
-// Check if a number is a perfect number
 const isPerfect = (num) => {
   let sum = 1;
   for (let i = 2; i * i <= num; i++) {
@@ -21,7 +19,6 @@ const isPerfect = (num) => {
   return sum === num && num !== 1;
 };
 
-// Check if a number is an Armstrong number
 const isArmstrong = (num) => {
   const digits = num.toString().split("").map(Number);
   const power = digits.length;
@@ -29,7 +26,6 @@ const isArmstrong = (num) => {
   return sum === num;
 };
 
-// Get number properties
 const getNumberProperties = async (number) => {
   if (isNaN(number)) {
     return { error: true, number };
